@@ -10,7 +10,7 @@ const citasmedicasModel = require("./models/citasMedicas");
 const examenModel = require("./models/examenMedico");
 const laboratorioModel = require("./models/laboratorio");
 
-const sequelize = new Sequelize("proyecto-web", "root", "", {
+const sequelize = new Sequelize("proyecto_web", "root", "", {
   host: "localhost",
   dialect: "mysql",
 });
