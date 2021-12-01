@@ -5,12 +5,21 @@ require('isomorphic-fetch');
 
 (async () => {
     createDepartamentos();
-    createMunicipios();
-    createEps();
-    createEspecialidades();
-    createMedicos();
-    createExamenes();
-    createLaboratorios();
+    setTimeout(() => {
+        createMunicipios();
+    }, 1000);
+    setTimeout(() => {
+        createEps();
+    }, 2000);
+    setTimeout(() => {
+        createEspecialidades();
+    }, 3000);
+    setTimeout(() => {
+        createMedicos();
+    }, 4000);
+    setTimeout(() => {
+        createExamenes();
+    }, 5000);
 })()
 
 async function createDepartamentos() {
@@ -139,28 +148,6 @@ async function createExamenes(){
     }
 
     console.log('Examenes creados');
-}
-
-async function createLaboratorios(){
-    const count = await Laboratorio.count();
-    if(count < 4){
-        const urlLaboratorios = "https://api.jsonbin.io/b/61a6b83c0ddbee6f8b14f114";
-        const respnse = await fetch(urlLaboratorios);
-        const laboratorios = await respnse.json();
-
-        laboratorios.forEach(async (laboratorio) => {
-            const {fecha, valoracion, usuarioId, examenId, especialidadId} = laboratorio;
-            await Laboratorio.create({ 
-                fecha,
-                valoracion,
-                usuarioId,
-                examenId,
-                especialidadId
-            });
-        });
-    }
-
-    console.log('Laboratorios creados');
 }
 
 module.exports = StaticsRouter;
